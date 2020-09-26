@@ -30,7 +30,8 @@ function keyDown(e) {
     player.right = true
   }
 
-  if (e.key === ' ' && player.y + player.h === ground.y) {
+  if ((e.key === ' ' || e.key === 'w' || e.key === 'ArrowUp') &&
+  player.y + player.h === ground.y) {
     player.jump = true;
   }
 }
@@ -44,13 +45,13 @@ function keyUp(e) {
     player.right = false
   }
 
-  if (e.key === ' ') {
+  if (e.key === ' ' || e.key === 'w' || e.key === 'ArrowUp') {
     player.jump = false;
   }
 }
 
 function movePlayer() {
-  if (!player.jump) {
+  if (!player.jump && player.y + player.h === ground.y) {
     player.dx = 0;
   }
 
